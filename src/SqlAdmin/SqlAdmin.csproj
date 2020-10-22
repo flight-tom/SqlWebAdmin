@@ -1,0 +1,232 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B02B97F6-AB1B-4F01-8EC6-67140945B542}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>SqlAdmin</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SqlAdmin</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>0.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>documentation.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>doc\SqlAdmin.xml</DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib">
+      <Name>mscorlib</Name>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Drawing.Design">
+      <Name>System.Drawing.Design</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminUser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemPicker.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataTypeEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataTypePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NativeMethods\NativeMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Security.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlColumn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlColumnCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlColumnInformation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlDatabase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlDatabaseCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlDatabaseProperties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlDatabaseRole.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlDatabaseRoleCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlFileGrowthType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlFileProperties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlLanguage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlLanguageCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlLogin.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlLoginCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlLoginType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlNtAccessType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlObjectType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlPermissions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlPermissionsCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlPrivilegeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlScriptType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlServer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlServerRole.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlServerRoleCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlStoredProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlStoredProcedureCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlTableCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlUser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SqlUserCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SR.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="SqlAdmin.resx">
+      <CustomToolNamespace>SqlAdmin</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="doc\doc\Documentation.chm" />
+    <None Include="sqladminkey.snk" />
+    <Content Include="doc\FAQ.ICO" />
+    <Content Include="doc\SqlAdmin.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

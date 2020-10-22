@@ -1,0 +1,179 @@
+/******************************************************************************/
+/*DEFAULT STYLES FOR ALL SECTIONS**********************************************/
+/******************************************************************************/
+
+body						  { font-family: Tahoma, MS Sans Serif, Arial, Sans Serif;
+							    font-weight: normal;
+				 			    font-size: 70%;
+							    color: #000000;
+							    margin-top: 0px;
+		  		 			    margin-left: 0px;
+							    margin-right: 0px;
+							    margin-bottom: 0px; }
+
+a:link						  { color: #003399;
+				  				text-decoration: none; }
+								
+a:visited					  { color: #003399;
+				  				text-decoration: none; }
+								
+a:active					  { color: #CC3300;
+				  				text-decoration: none; }
+								
+a:hover						  { color: #CC3300;
+				  				text-decoration: none; }
+								
+table						  { font-family: Tahoma, MS Sans Serif, Arial, Sans Serif;
+							    font-weight: normal;
+				 			    font-size: 100%;
+							    color: #000000; }
+								
+tr.tableHeader				  { background-color: #808080;
+								font-weight: bold; }
+								
+td.tableHeader				  { background-color: #808080;
+								font-weight: bold; }								
+								
+tr.tableItems				  { background-color: #DDDDDD; }
+								
+input						  { font-family: Tahoma, MS Sans Serif, Arial, Sans Serif;
+							    font-weight: normal;
+				 			    font-size: 100%; }
+								
+select						  { font-family: Tahoma, MS Sans Serif, Arial, Sans Serif;
+							    font-weight: normal;
+				 			    font-size: 100%; }
+					
+.button						  { color: #000000; 
+								cursor: hand; 
+								border: solid 1px #808080; 
+								background: url(images/button_back.gif) center; 
+								padding:1px; }
+							
+.selectedLink				  { background-color: #99ccff; 
+								border:solid 1px #ffffff; }
+								
+.createLink					  { position:relative; top: 2px; }
+							
+/******************************************************************************/
+/******************************************************************************/
+
+.msdeTitle 					  { font-size: 20pt;
+								font-weight: bold;
+								color:#99ccff; }
+								
+.adminTitle 				  { font-size: 20pt;
+								color: #333366;
+								font-weight: bold; }
+
+.text 						  { color: #000000;
+								text-decoration: none; }
+								
+.commandLink 				  { color: #4040ff;
+								text-decoration: underline;}
+								
+.columnHeader 				  { text-decoration: none;
+								font-weight: bold; }
+
+.topButton 					  { font-weight: bold;
+								color: #333366;
+								text-decoration: none; }
+
+.tabSelected			  	  { font-weight: bold;
+								text-decoration:none;
+								background-color:#ccccff; }
+								
+.tabUnselected				  { color: #202020;
+								font-weight: normal;
+								text-decoration: none;
+								background-color: #9999dd; }
+								
+.tabSelectedBack			  { background-color: #ccccff; }
+
+.currentHeader				  { font-weight: bold;
+								text-decoration: none; }
+
+.internalLink				  { font-weight: bold; }
+
+a.leftMenu 					  { color: #000000;
+								text-decoration: none;
+								padding: 4px; }
+/*
+a.leftMenu:hover 			  { color: #FFFFFF;
+								text-decoration: none; }
+*/
+a.leftMenu:visited 			  { color: #000000;
+								text-decoration: none; }
+
+a.leftMenuSelected			  { color: #000000;
+								text-decoration: none;
+								padding: 4px;
+								cursor: default; }
+
+a.leftMenuSelected:hover 	  { color: #000000;
+								text-decoration: none; }
+
+a.leftMenuSelected:visited 	  { color: #000000;
+								text-decoration: none; }
+
+.databaseListHeader 		  { font-weight:bold;
+								padding: 4px; }
+								
+.databaseListItem 			  { padding: 4px; }
+								
+.databaseListAction 		  { color:blue;
+								text-decoration:underline; }
+
+a.databaseListBlack:hover 	  { color:black;
+								text-decoration:none; }
+
+a.databaseListBlack:visited   { color:black;
+								text-decoration:none; }
+								
+a.databaseListBlack 		  { color:black;
+								text-decoration:none; }
+
+
+a.newSettings				  { color:#336699; }
+
+.selectedMenu 				  { font-weight: bold;
+								color: #FFa500;
+								text-decoration: none; }
+
+.menuHeader					  { font-weight: bold;
+								padding-bottom: 3px;
+								padding: 4px; }
+
+.title 						  { color: #333366;
+								text-decoration: none;
+								font-weight: bold; }
+
+.subtitle 					  { color: #336699;
+								text-decoration: none;
+								font-weight: bold; }
+
+.desc 						  { color: #336699;
+								text-decoration: none; }
+
+.advanced 					  { color: #333366;
+								font-weight: bold;
+								text-decoration: none; }
+
+.form 						  { color: #000000;
+								text-decoration: none; }
+
+.tableHeader				  { color: #ffffff;
+								text-decoration: none;
+								font-weight: bold; }
+
+.error						  { color: #ff0000;
+								text-decoration: none; }
+
+a.summaryHead      			  { color: #336699;
+								font-weight: bold; }
+
+.grayDivide					  { height: 2px;
+								width: 120px; }
+								
+
+  

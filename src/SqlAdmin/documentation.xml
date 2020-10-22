@@ -1,0 +1,1911 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SqlAdmin</name>
+    </assembly>
+    <members>
+        <member name="T:SqlAdmin.SqlFileProperties">
+            <summary>
+            Represents the properties of a data file or a transaction log file of a database.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlFileProperties.#ctor(SqlAdmin.SqlFileGrowthType,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the SqlFileProperties class.
+            </summary>
+            <param name="fileGrowthType">
+            A SqlFileGrowthType value representing the growth type of the file.
+            </param>
+            <param name="fileGrowth">
+            The amount in which the file grows, either in percent or megabytes, depending on the value of fileGrowthType.
+            </param>
+            <param name="maximumSize">
+            The maximum size of the database in megabytes.
+            </param>
+        </member>
+        <member name="P:SqlAdmin.SqlFileProperties.FileGrowthType">
+            <summary>
+            A SqlFileGrowthType value representing the type of growth of this file.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlFileProperties.FileGrowth">
+            <summary>
+            The amount in which the file grows, either in percent of megabytes, depending on the value of FileGrowthType.
+            A value of 0 indicates that the file does not automatically grow.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlFileProperties.MaximumSize">
+            <summary>
+            The maximum size of the database in megabytes.
+            A value of -1 indicates unrestricted growth.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlDatabase">
+            <summary>
+            Represents a SQL database.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabase.GetDatabaseProperties">
+            <summary>
+            Gets the properties of the database.
+            These properties include database status, owner, create date, file properties, and more.
+            </summary>
+            <returns>
+            The properties of the database.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabase.Query(System.String)">
+            <summary>
+            Runs a batch of SQL queries on the server using this database.
+            </summary>
+            <param name="query">
+            A string containing a batch of SQL queries.
+            </param>
+            <returns>
+            An array of DataTable objects containing grids for each result set (if any)
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabase.Remove">
+            <summary>
+            Permanently removes this database from the server.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabase.Script(SqlAdmin.SqlScriptType)">
+            <summary>
+            Generates a Transact-SQL command batch that can be used to re-create the SQL database.
+            </summary>
+            <param name="scriptType">
+            A SqlScriptType indicating what to include in the script.
+            </param>
+            <returns>
+            A string containing a Transact-SQL command batch that can be used to re-create the SQL database.
+            </returns>
+            <remarks>
+            The valid SqlScriptType values are: Create, Drop, Comments.
+            </remarks>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabase.SetDatabaseProperties(SqlAdmin.SqlDatabaseProperties)">
+            <summary>
+            Sets data file and transaction log file properties for this database.
+            </summary>
+            <param name="props">
+            A list of properties to set.
+            </param>
+            <remarks>
+            Only the data file and transaction log file properties are used.
+            You cannot set the owner, create date, etc. properties of the database.
+            </remarks>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabase.CurrentDatabase(SqlAdmin.SqlServer)">
+            <summary>
+            Connects to the CurrentServer and returns the currently selected database.  
+            Redirects to an errorpage if the currentDatabase is invalid or null.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabase.Name">
+            <summary>
+            Gets the name of the database.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabase.Server">
+            <summary>
+            The server on which this database resides.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabase.Size">
+            <summary>
+            The size of the database in megabytes. A size of -1 indicates that the user has insufficient permissions to see the size of the database.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabase.Users">
+            <summary>
+            Gets a collection of SqlUser objects that represent the individual users of this database.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabase.DatabaseRoles">
+            <summary>
+            Gets a collection of SqlDatabaseRole objects that represent individual roles of this database.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabase.StoredProcedures">
+            <summary>
+            Gets a collection of SqlStoredProcedure objects that represent the individual stored procedures in this database.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabase.Tables">
+            <summary>
+            Gets a collection of SqlTable objects that represent the individual tables in this database.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabase.SqlDbTypeDictionary">
+            <summary>
+            List all possible sql dbtype
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlServerRole">
+            <summary>
+            A SQL Server level Role
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlServerRole.#ctor(SqlAdmin.SqlServer,System.String,System.String,System.String)">
+            <summary>
+            Default Constructor
+            </summary>
+            <param name="server">A SqlServer object</param>
+            <param name="name">The name of the sql server role.</param>
+            <param name="fullName">The full name of the sql server role.</param>
+            <param name="description">A description of the sql server role.</param>
+        </member>
+        <member name="M:SqlAdmin.SqlServerRole.GetServerRoleMembers">
+            <summary>
+            returns a ArrayList object that enumerates the members of a SQL Server fixed server security role
+            </summary>
+            <returns>An ArrayList with a username (string) for each item.</returns>
+        </member>
+        <member name="P:SqlAdmin.SqlServerRole.Name">
+            <summary>
+            The name of the sql server role
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServerRole.FullName">
+            <summary>
+            The full name of the sql server role. Provides descriptive data.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServerRole.Description">
+            <summary>
+            Provides additional data about the sql server role.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlPermissionsCollection">
+            <summary>
+            Summary description for SqlPermissionsCollection.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlLogin">
+            <summary>
+            Represents a SQL Login 
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlLogin.GetUserName(System.String)">
+            <summary>
+            The GetUserName method returns the database user used by the referenced login, when a connection using that login accesses the specified database.
+            </summary>
+            <param name="Database"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.SqlLogin.IsMember(System.String)">
+            <summary>
+            The IsMember method returns TRUE when the user or login referenced is a member of the role identified in the Role argument.
+            </summary>
+            <param name="Role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.SqlLogin.ListMembers">
+            <summary>
+            The ListMembers method returns a NameList object that enumerates the Microsoft® SQL Server™ 2000 database roles in which a database user has membership, or the server roles in which a login has membership.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.SqlLogin.Remove">
+            <summary>
+            Permanently removes this login from the database.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlLogin.SetPassword(System.String,System.String)">
+            <summary>
+            The SetPassword method changes the password for the referenced login.
+            </summary>
+            <param name="oldPassword"></param>
+            <param name="newPassword"></param>
+        </member>
+        <member name="P:SqlAdmin.SqlLogin.Database">
+            <summary>
+            Identifies the default database for this SQL Server login
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLogin.DenyNTLogin">
+            <summary>
+            Controls access to an instance of Microsoft SQL Server for login records that identify Microsoft Windows NT users or groups.
+            
+            When TRUE, any Windows NT authenticated connection attempt that specifies the user or group name fails authentication.
+            
+            When FALSE, the Windows NT user or group is allowed access to the instance of SQL Server on which the login is defined. 
+            Access rights are established through login and user role memberships and permissions explicitly granted on databases and 
+            database objects.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLogin.Language">
+            <summary>
+            Controls direct language use for a client connection using the referenced login.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLogin.LanguageAlias">
+            <summary>
+            returns a friendly name for a language used by a Microsoft® SQL Server™ 2000 login
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLogin.Name">
+            <summary>
+            The name of this login.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLogin.NTLoginAccessType">
+            <summary>
+            reports whether a Microsoft Windows NT 4.0 login has explicit permissions to connect to a server.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLogin.LoginType">
+            <summary>
+            The type of login
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlDatabaseRoleCollection">
+            <summary>
+            Summary description for SqlDatabaseRoleCollection.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabaseRoleCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the items from the SqlDatabaseRoleCollection to the specified System.Array object, starting at the specified index in the System.Array object.
+            </summary>
+            <param name="array">
+            </param>
+            <param name="index">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabaseRoleCollection.GetEnumerator">
+            <summary>
+            Returns an System.Collections.IEnumerator interface that contains all SqlDatabaseRole objects in the SqlDatabaseRoleCollection.
+            </summary>
+            <returns>
+            A System.Collections.IEnumerator interface that contains all SqlDatabaseRole objects in the SqlDatabaseRoleCollection.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabaseRoleCollection.Refresh">
+            <summary>
+            Updates the SqlDatabaseRoleCollection with any changes made since the last call to Refresh.
+            
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseRoleCollection.Count">
+            <summary>
+            Gets the number of sql roles in SqlDatabaseRoleCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseRoleCollection.IsReadOnly">
+            <summary>
+            Gets a value that indicates whether the sql role in the SqlDatabaseRoleCollection can be modified.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseRoleCollection.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the SqlDatabaseRoleCollection is synchronized (thread-safe).
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseRoleCollection.SyncRoot">
+            <summary>
+            Gets the object that can be used to synchronize access to the SqlDatabaseRoleCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseRoleCollection.Item(System.Int32)">
+            <summary>
+            Gets a SqlDatabaseRole object from the SqlDatabaseRoleCollection collection at the specified index.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseRoleCollection.Item(System.String)">
+            <summary>
+            Gets a SqlDatabaseRole object from the SqlDatabaseRoleCollection collection that has the specified name (case-insensitive).
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlColumn">
+            <summary>
+            Represents a SQL column.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlColumn.Remove">
+            <summary>
+            Permanently removes this column from the table.
+            </summary>
+            <remarks>
+            If there are dependencies on this column other than a primary key or a default, the operation may fail.
+            </remarks>
+        </member>
+        <member name="P:SqlAdmin.SqlColumn.ColumnInformation">
+            <summary>
+            Gets or sets the column information.
+            </summary>
+            <remarks>
+            When setting the column information, the table will be internally recreated, and certain table properties such as foreign keys and indexes will be lost.
+            The primary key, however, will remain intact.
+            </remarks>
+        </member>
+        <member name="P:SqlAdmin.SqlColumn.Table">
+            <summary>
+            The SqlTable to which this column belongs.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlDatabaseProperties">
+            <summary>
+            Represents the properties of the database such as status, owner, size, and file information.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabaseProperties.#ctor(SqlAdmin.SqlFileProperties,SqlAdmin.SqlFileProperties)">
+            <summary>
+            Initializes a new instance of the SqlDatabaseProperties class.
+            </summary>
+            <param name="dataFile">
+            A SqlFileProperties object representing the data file for this database.
+            </param>
+            <param name="logFile">
+            A SqlFileProperties object representing the transaction log file for this database.
+            </param>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseProperties.Name">
+            <summary>
+            The name of the database.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseProperties.Status">
+            <summary>
+            The status of the database, such as "Normal" or "Offline".
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseProperties.Owner">
+            <summary>
+            The owner of the database.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseProperties.DateCreated">
+            <summary>
+            The date and time at which the database was created.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseProperties.Size">
+            <summary>
+            The size of the database in megabytes.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseProperties.SpaceAvailable">
+            <summary>
+            The available space of the database in megabytes.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseProperties.NumberOfUsers">
+            <summary>
+            The number of users using the database.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseProperties.DataFile">
+            <summary>
+            A SqlFileProperties object representing the data file for this database.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseProperties.LogFile">
+            <summary>
+            A SqlFileProperties object representing the transaction log file for this database.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.NativeMethods">
+            <summary>
+            Primary Interop class. COM methods not used are primarily prefixed with Bogus. 
+            For information on how to extend this class please post to the support forum. There are some
+            interfaces and classes in this file that are not used implemented throughout the application.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlDatabaseCollection">
+            <summary>
+            A collection of SqlDatabase objects that represent the databases in a SQL server.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabaseCollection.Add(System.String)">
+            <summary>
+            Adds a new database to the server using default properties.
+            </summary>
+            <param name="name">
+            The name of the database to create.
+            </param>
+            <returns>
+            If the operation succeeded, the return value is the database created.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabaseCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the items from the SqlDatabaseCollection to the specified System.Array object, starting at the specified index in the System.Array object.
+            </summary>
+            <param name="array">
+            </param>
+            <param name="index">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabaseCollection.GetEnumerator">
+            <summary>
+            Returns an System.Collections.IEnumerator interface that contains all SqlDatabase objects in the SqlDatabaseCollection.
+            </summary>
+            <returns>
+            A System.Collections.IEnumerator interface that contains all SqlDatabase objects in the SqlDatabaseCollection.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabaseCollection.Refresh">
+            <summary>
+            Updates the SqlDatabaseCollection with any changes made since the last call to Refresh.
+            Refresh is automatically called once when the SqlServer.Databases collection is read.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseCollection.Count">
+            <summary>
+            Gets the number of databases in the SqlDatabaseCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseCollection.IsReadOnly">
+            <summary>
+            Gets a value that indicates whether the columns in the SqlDatabaseCollection can be modified.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseCollection.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the SqlDatabaseCollection is synchronized (thread-safe).
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseCollection.SyncRoot">
+            <summary>
+            Gets the object that can be used to synchronize access to the SqlDatabaseCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseCollection.Item(System.Int32)">
+            <summary>
+            Gets a SqlDatabase object from the SqlDatabaseCollection collection at the specified index.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseCollection.Item(System.String)">
+            <summary>
+            Gets a SqlDatabase object from the SqlDatabaseCollection collection that has the specified name (case-insensitive).
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlUser">
+            <summary>
+            Represents a MS SQL Server Database User
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlUser.#ctor(SqlAdmin.SqlDatabase,System.Boolean,System.String,System.Int32,System.String,System.Boolean)">
+            <summary>
+            Default Constructor for a SQL Server Database User.
+            </summary>
+            <param name="database">A valid SqlDatabase object</param>
+            <param name="hasDbAccess">Indicates whether user has DBAccess. (True or False)</param>
+            <param name="login">User's Login name</param>
+            <param name="id">User ID</param>
+            <param name="name">User name</param>
+            <param name="systemObject">Indicates whether or not this is a system object.</param>
+        </member>
+        <member name="M:SqlAdmin.SqlUser.Remove">
+            <summary>
+            Removes this user from the database.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlUser.ListMembers">
+            <summary>
+            User is Member of these DatabaseRoles.
+            </summary>
+            <returns>ArrayList of all DatabaseRoles that this User is a Member of.</returns>
+        </member>
+        <member name="M:SqlAdmin.SqlUser.IsMember(System.String)">
+            <summary>
+            Is current User a member of the specified DatabaseRole?"
+            </summary>
+            <param name="role">The role name.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="P:SqlAdmin.SqlUser.Login">
+            <summary>
+            Get or set User's Login name
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlUser.Role">
+            <summary>
+            Can only be set if you are creating user. Otherwise you'll return an exception.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlUser.ID">
+            <summary>
+            User's ID
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlUser.Name">
+            <summary>
+            Get or set Object name
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlUser.HasDbAccess">
+            <summary>
+            Does this user has explicit access to the database?" 
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlUser.SystemObject">
+            <summary>
+            Is this object a System (required) object
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlTable">
+            <summary>
+            Represents a SQL table.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.AddIDColumn">
+            <summary>
+            Insert ID Column if table doesn't have primary key fields
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.Remove">
+            <summary>
+            Permanently removes this table from the database.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.GetTableData">
+            <summary>
+            Get Table Data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.ScriptData(SqlAdmin.SqlScriptType)">
+            <summary>
+            Generates a Transact-SQL command batch that can be used to re-create the data in the SQL table.
+            </summary>
+            <param name="scriptType">
+            A SqlScriptType indicating what to include in the script.
+            </param>
+            <returns>
+            A string containing a Transact-SQL command batch that can be used to re-create the data in the SQL table.
+            </returns>
+            <remarks>
+            The valid SqlScriptType values are: Comments.
+            </remarks>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.ScriptSchema(SqlAdmin.SqlScriptType)">
+            <summary>
+            Generates a Transact-SQL command batch that can be used to re-create the SQL table.
+            </summary>
+            <param name="scriptType">
+            A SqlScriptType indicating what to include in the script.
+            </param>
+            <returns>
+            A string containing a Transact-SQL command batch that can be used to re-create the SQL table.
+            </returns>
+            <remarks>
+            The valid SqlScriptType values are: Create, Drop, Comments, Defaults, PrimaryKey, ForeignKeys, UniqueKeys, Checks, Indexes.
+            </remarks>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.GetSelectCommandTag">
+            <summary>
+            Get Select Command for SqlDataSource control
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.GetInsertCommandTag">
+            <summary>
+            Get Current Table Insert Script
+            </summary>   
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.GetDeleteCommandTag">
+            <summary>
+            Get Delete Command string for SqlDataSource Control
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.GetUpdateCommandTag">
+            <summary>
+            Get UpdateCommand for SqlDataSorce control
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.GetDeleteParameters">
+            <summary>
+            Get delete parameters for deleteParameters in SqlDataSource control
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.GetInsertParameters">
+            <summary>
+            return Insert parameters for InsertParameters in SqlDataSource control
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.GetUpdateParameters">
+            <summary>
+            return Update parameters for UpdateParameters in SqlDataSource control
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.SqlTable.GetBoundFields">
+            <summary>
+            List of BoundField for DataGridView control, and other data asp.net server control.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SqlAdmin.SqlTable.CurrentTable">
+            <summary>
+            return Current Database Table
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTable.Columns">
+            <summary>
+            Gets a collection of SqlColumn objects that represent the individual columns in this table.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTable.CreateDate">
+            <summary>
+            The date and time when this table was created.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTable.Database">
+            <summary>
+            The SqlDatabase to which this table belongs.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTable.Name">
+            <summary>
+            The name of the table.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTable.Owner">
+            <summary>
+            The owner of the table.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTable.Rows">
+            <summary>
+            The number of rows used in this table.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTable.TableType">
+            <summary>
+            A SqlObjectType value indicating whether this is a User table or a System table.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTable.PrimaryKeys">
+            <summary>
+            Primary Keys column in Sql table
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlObjectType">
+            <summary>
+            Represents the type of an object, either a User object or a System object.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlObjectType.NotSet">
+            <summary>
+            Indicates that the value is not set.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlObjectType.User">
+            <summary>
+            Indicates that the object was created by a user.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlObjectType.System">
+            <summary>
+            Indicates that the object is a system object.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlObjectType.Database">
+            <summary>
+            Indicates that the object is a database.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlObjectType.StoredProcedure">
+            <summary>
+            Indicates that the object is a stored procedure
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlObjectType.SystemTable">
+            <summary>
+            Indicates that the object is a System object. In this case a System Table
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlObjectType.UserTable">
+            <summary>
+            Indicates that the object is a user table.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlObjectType.View">
+            <summary>
+            Indicates that the object is a view.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlStoredProcedure">
+            <summary>
+            Represents a SQL stored procedure.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlStoredProcedure.Remove">
+            <summary>
+            Permanently removes this stored procedure from the database.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlStoredProcedure.Script(SqlAdmin.SqlScriptType)">
+            <summary>
+            Generates a Transact-SQL command batch that can be used to re-create the SQL stored procedure.
+            </summary>
+            <param name="scriptType">
+            A SqlScriptType indicating what to include in the script.
+            </param>
+            <returns>
+            A string containing a Transact-SQL command batch that can be used to re-create the SQL stored procedure.
+            </returns>
+            <remarks>
+            The valid SqlScriptType values are: Create, Drop, Comments.
+            </remarks>
+        </member>
+        <member name="P:SqlAdmin.SqlStoredProcedure.CreateDate">
+            <summary>
+            The date and time when this stored procedure was created.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlStoredProcedure.Database">
+            <summary>
+            The SqlDatabase to which this stored procedure belongs.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlStoredProcedure.Name">
+            <summary>
+            The name of this stored procedure.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlStoredProcedure.Owner">
+            <summary>
+            The owner of the table.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlStoredProcedure.StoredProcedureType">
+            <summary>
+            A SqlObjectType value indicating whether this is a User stored procedure or a System stored procedure.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlStoredProcedure.Text">
+            <summary>
+            The text of this stored procedure.
+            The text must contain a valid SQL stored procedure creation statement.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlNtAccessType">
+            <summary>
+            Summary description for SqlNtAccessType.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlLanguageCollection">
+            <summary>
+            Collection of SQL Language objects
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlLanguageCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the items from theSqlLanguageCollection to the specified System.Array object, starting at the specified index in the System.Array object.
+            </summary>
+            <param name="array">
+            </param>
+            <param name="index">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.SqlLanguageCollection.GetEnumerator">
+            <summary>
+            Returns an System.Collections.IEnumerator interface that contains all SqlLanguage objects in the SqlLanguageCollection.
+            </summary>
+            <returns>
+            A System.Collections.IEnumerator interface that contains all SqlLanguage objects in the SqlLanguageCollection.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlLanguageCollection.Refresh">
+            <summary>
+            Updates the SqlLanguageCollection  with any changes made since the last call to Refresh.
+            
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLanguageCollection.Count">
+            <summary>
+            Gets the number of language objects in the SqlLanguageCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLanguageCollection.IsReadOnly">
+            <summary>
+            Gets a value that indicates whether the login in the SqlLanguageCollection can be modified.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLanguageCollection.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the SqlLanguageCollection is synchronized (thread-safe).
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLanguageCollection.SyncRoot">
+            <summary>
+            Gets the object that can be used to synchronize access to the SqlLanguageCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLanguageCollection.Item(System.Int32)">
+            <summary>
+            Gets a SqlLanguage object from the SqlLanguageCollection collection at the specified index.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLanguageCollection.Item(System.String)">
+            <summary>
+            Gets a SqlLanguage object from the SqlLanguageCollection collection that has the specified name (case-insensitive).
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.DataTypeEditor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.DataTypeEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            </summary>
+            <param name="context">
+            </param>
+            <param name="provider">
+            </param>
+            <param name="value">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.DataTypeEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            </summary>
+            <param name="context">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="T:SqlAdmin.Security">
+            <summary>
+            General Security functions.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.Security.WriteCookieForFormsAuthentication(System.String,System.String,System.Boolean,SqlAdmin.SqlLoginType)">
+            <summary>
+            Used for forms auth. currently aren't using.
+            </summary>
+            <param name="username">The username of the current user</param>
+            <param name="password">The password of the current user</param>
+            <param name="persist">Should we persist this data</param>
+            <param name="loginType">What type of login</param>
+        </member>
+        <member name="M:SqlAdmin.Security.Impersonate(System.String,System.String,System.String)">
+            <summary>
+            Starts the impersonation process. If an exception occurs it is rolled up to the caller.
+            </summary>
+            <param name="username">Username</param>
+            <param name="domain">domain</param>
+            <param name="password">password</param>
+            <returns>Indicates whether the impersonation process was successful.</returns>
+        </member>
+        <member name="M:SqlAdmin.Security.EndImpersonate">
+            <summary>
+            Ends impersonation 
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.Security.DoImpersonate(System.String,System.String,System.String)">
+            <summary>
+            Starts the impersonation process
+            </summary>
+            <param name="username">The username</param>
+            <param name="domain">The domain name</param>
+            <param name="password">The password</param>
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.Security.StopImpersonate">
+            <summary>
+            Stops the impersonation process
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.Security.WebServer">
+            <summary>
+            What type of webserver is this IIS or Cassini
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.Security.Identity">
+            <summary>
+            The current identity of the user
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlUserCollection">
+            <summary>
+            A collection of SQL Server Datbase User Objects (SqlUser)
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlUserCollection.#ctor(SqlAdmin.SqlDatabase)">
+            <summary>
+            Default Constructor
+            </summary>
+            <param name="database">SqlDatabase object</param>
+        </member>
+        <member name="M:SqlAdmin.SqlUserCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the items from the SqlUserCollection to the specified System.Array object, starting at the specified index in the System.Array object.
+            </summary>
+            <param name="array">
+            </param>
+            <param name="index">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.SqlUserCollection.GetEnumerator">
+            <summary>
+            Returns an System.Collections.IEnumerator interface that contains all SqlUser objects in the SqlUserCollection.
+            </summary>
+            <returns>
+            A System.Collections.IEnumerator interface that contains all SqlUser objects in the SqlUserCollection.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlUserCollection.Add(System.String,System.String)">
+            <summary>
+            Adds a login to a database.
+            </summary>
+            <param name="login">A valid login name.</param>
+            <returns>A SqlUser object.</returns>
+        </member>
+        <member name="M:SqlAdmin.SqlUserCollection.Refresh">
+            <summary>
+            Updates the SqlUserCollection with any changes made since the last call to Refresh.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlUserCollection.Count">
+            <summary>
+            Gets the number of sql users in SqlUserCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlUserCollection.IsReadOnly">
+            <summary>
+            Gets a value that indicates whether the sql user in the SqlUserCollection can be modified.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlUserCollection.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the SqlUserCollection is synchronized (thread-safe).
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlUserCollection.SyncRoot">
+            <summary>
+            Gets the object that can be used to synchronize access to the SqlUserCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlUserCollection.Item(System.Int32)">
+            <summary>
+            Gets a SqlUser object from the SqlUserCollection collection at the specified index.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlUserCollection.Item(System.String)">
+            <summary>
+            Gets a SqlUser object from the SqlUserCollection collection that has the specified name (case-insensitive).
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlColumnInformation">
+            <summary>
+            Represents the properties of a SQL column such as name, data type, and size.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlColumnInformation.#ctor">
+            <summary>
+            Initializes a new instance of the SqlColumnInformation class.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlColumnInformation.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SqlColumnInformation class.
+            </summary>
+            <param name="name">
+            The name of the column.
+            </param>
+        </member>
+        <member name="M:SqlAdmin.SqlColumnInformation.#ctor(System.Boolean,System.Boolean,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Boolean,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new instance of the SqlColumnInformation class.
+            </summary>
+            <param name="key">
+            Indicates whether this column is part of the primary key.
+            </param>
+            <param name="identity">
+            Indicates whether this column is an identity column.
+            </param>
+            <param name="name">
+            The name of this column.
+            </param>
+            <param name="dataType">
+            The data type of this column.
+            </param>
+            <param name="size">
+            The size of this column.
+            </param>
+            <param name="scale">
+            The size of this column.
+            </param>
+            <param name="precision">
+            The precision of this column.
+            </param>
+            <param name="nulls">
+            Whether this column allows nulls/
+            </param>
+            <param name="defaultValue">
+            The default value of this column.
+            </param>
+            <param name="identitySeed">
+            If this column is an identity column, the seed for this column.
+            </param>
+            <param name="identityIncrement">
+            If this column is an identity column, the increment for this column.
+            </param>
+            <param name="isRowGuid">
+            If this column is an identity column, whether this column is a Row GUID column.
+            </param>
+        </member>
+        <member name="M:SqlAdmin.SqlColumnInformation.Clone">
+            <summary>
+            Creates a copy of this SqlColumnInformation object.
+            </summary>
+            <returns>
+            Returns a new instance of the SqlColumnInformation class.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlColumnInformation.ToString">
+            <summary>
+            Returns the name of this column.
+            </summary>
+            <returns>
+            Returns the name of this column.
+            </returns>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.Key">
+            <summary>
+            Indicates whether this column is part of the primary key.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.Identity">
+            <summary>
+            True if the column is an identity column.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.Name">
+            <summary>
+            The name of the column.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.DataType">
+            <summary>
+            The data type of this column.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.ColumnDbType">
+            <summary>
+            return Column DbType
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.Size">
+            <summary>
+            The size of this column.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.Scale">
+            <summary>
+            The maximum number of digits that can appear to the right of the decimal point for values of this column.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.Precision">
+            <summary>
+            The maximum number of digits for values of this column.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.Nulls">
+            <summary>
+            True if a column can contain null values.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.DefaultValue">
+            <summary>
+            The default for this column whenever a row with a null value for this column is inserted into the table.
+            Defaults that contain strings must be enclosed in single quotes, e.g. 'hello'.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.IdentitySeed">
+            <summary>
+            The seed value of an identity column. This option applies only to columns whose Identity option is set to True.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.IdentityIncrement">
+            <summary>
+            The increment value of an identity column. This option applies only to columns whose Identity option is set to True.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnInformation.IsRowGuid">
+            <summary>
+            Indicates whether the column is used by SQL Server as a ROWGUID column.  You can set this value to True only for a column that is an identity column.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.DataTypePicker">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.DataTypePicker.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.DataTypePicker.End">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.DataTypePicker.FillData">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.DataTypePicker.OnKeyUp(System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            </summary>
+            <param name="e">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.DataTypePicker.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            </summary>
+            <param name="e">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.DataTypePicker.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            </summary>
+            <param name="e">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.DataTypePicker.OnSelectedIndexChanged(System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="e">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.DataTypePicker.Start(System.Windows.Forms.Design.IWindowsFormsEditorService,System.String)">
+            <summary>
+            </summary>
+            <param name="edSvc">
+            </param>
+            <param name="selectedDataType">
+            </param>
+        </member>
+        <member name="T:SqlAdmin.AdminUser">
+            <summary>
+            Describes a User of this tool.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.AdminUser.#ctor(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Constructor for Sql authentication.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.AdminUser.Username">
+            <summary>
+            The Sql Username used for this user on the selected server.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.AdminUser.Password">
+            <summary>
+            The Sql Password used for this user on the selected server.
+            </summary>
+            <remarks>
+            This property is not used for Integrated Security.
+            </remarks>
+        </member>
+        <member name="P:SqlAdmin.AdminUser.Server">
+            <summary>
+            The Sql Server this user is administering.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.AdminUser.UseIntegratedSecurity">
+            <summary>
+            Determines whether or not to use Integrated Security for the selected servers Authentication.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.AdminUser.CurrentUser">
+            <summary>
+            Returns or Sets the current user based on the current HttpContext.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlAdminDescriptionAttribute">
+            <summary>
+            Summary description for AwcDescriptionAttribute.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlServer">
+            <summary>
+            Represents a Microsoft SQL Server.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlServer.#ctor(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the SqlServer class.
+            </summary>
+            <param name="name">The name of the server (e.g. localhost)</param>
+            <param name="username">The username to connect with</param>
+            <param name="password">The password to connect with</param>
+        </member>
+        <member name="M:SqlAdmin.SqlServer.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SqlServer class.
+            </summary>
+            <param name="name">The name of the server (e.g. localhost)</param>
+        </member>
+        <member name="M:SqlAdmin.SqlServer.Connect">
+            <summary>
+            Establishes a connection to the server specified in the Name property.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlServer.Disconnect">
+            <summary>
+            Disconnects the connection to the server.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlServer.GetConnectionString">
+            <summary>
+            Gets an ADO.NET-compatible connection string for this server.
+            </summary>
+            <returns>
+            An ADO.NET-compatible connection string for this server.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlServer.IsUserValid">
+            <summary>
+            Attempts to authenticate the current username and password to the current server.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SqlAdmin.SqlServer.Query(System.String)">
+            <summary>
+            Runs a batch of SQL queries on the server.
+            </summary>
+            <param name="query">
+            A string containing a batch of SQL queries.
+            </param>
+            <returns>
+            An array of DataTable objects containing grids for each result set (if any)
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlServer.Query(System.String,System.String)">
+            <summary>
+            Runs a batch of SQL queries on the server using a specific database.
+            </summary>
+            <param name="query">
+            A string containing a batch of SQL queries.
+            </param>
+            <param name="database">
+            The name of a database to run the query on.
+            </param>
+            <returns>
+            An array of DataTable objects containing grids for each result set (if any)
+            </returns>
+        </member>
+        <member name="P:SqlAdmin.SqlServer.Databases">
+            <summary>
+            Gets a collection of SqlDatabase objects that represent the individual databases on this server.
+            </summary>
+            <remarks>
+            Only databases which the current user has permission to access will be listed.
+            </remarks>
+        </member>
+        <member name="P:SqlAdmin.SqlServer.Name">
+            <summary>
+            Gets or sets the name of the server to connect to.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServer.Password">
+            <summary>
+            Gets or sets the password to connect with.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServer.Username">
+            <summary>
+            Gets or sets the username to connect with.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServer.Roles">
+            <summary>
+            Collection contains ServerRole objects that enumerate the security administration units
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServer.Logins">
+            <summary>
+            Gets Server level logins
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServer.Languages">
+            <summary>
+            Contains Language objects referencing the language records 
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServer.LoginSecure">
+            <summary>
+            Determines if integrated security is used instead of SQL login. False by default.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServer.CurrentServer">
+            <summary>
+            Retrieves a SqlServer instance based on the current user.  Redirects
+            to the homepage if one doesn't exist.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlStoredProcedureCollection">
+            <summary>
+            A collection of SqlStoredProcedure objects that represent the stored procedures in a SQL table.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlStoredProcedureCollection.Add(System.String,System.String)">
+            <summary>
+            Adds a new stored procedure to the table with specified name and text.
+            </summary>
+            <param name="name">
+            The name of the stored procedure to add.
+            </param>
+            <param name="text">
+            The text of the stored procedure to add.
+            The text must contain a valid SQL stored procedure creation statement.
+            </param>
+            <returns>
+            If the operation succeeded, the return value is the stored procedure created.
+            </returns>
+            <remarks>
+            The name in the Text parameter must match the Name parameter.
+            </remarks>
+        </member>
+        <member name="M:SqlAdmin.SqlStoredProcedureCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the items from the SqlStoredProcedureCollection to the specified System.Array object, starting at the specified index in the System.Array object.
+            </summary>
+            <param name="array">
+            </param>
+            <param name="index">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.SqlStoredProcedureCollection.GetEnumerator">
+            <summary>
+            Returns an System.Collections.IEnumerator interface that contains all SqlStoredProcedure objects in the SqlStoredProcedureCollection.
+            </summary>
+            <returns>
+            A System.Collections.IEnumerator interface that contains all SqlStoredProcedure objects in the SqlStoredProcedureCollection.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlStoredProcedureCollection.Refresh">
+            <summary>
+            Updates the SqlStoredProcedureCollection with any changes made since the last call to Refresh.
+            Refresh is automatically called once when the SqlTable.StoredProcedures collection is read.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlStoredProcedureCollection.Count">
+            <summary>
+            Gets the number of stored procedures in the SqlStoredProcedureCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlStoredProcedureCollection.IsReadOnly">
+            <summary>
+            Gets a value that indicates whether the stored procedures in the SqlStoredProcedureCollection can be modified.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlStoredProcedureCollection.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the SqlStoredProcedureCollection is synchronized (thread-safe).
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlStoredProcedureCollection.SyncRoot">
+            <summary>
+            Gets the object that can be used to synchronize access to the SqlStoredProcedureCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlStoredProcedureCollection.Item(System.Int32)">
+            <summary>
+            Gets a SqlStoredProcedure object from the SqlStoredProcedureCollection collection at the specified index.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlStoredProcedureCollection.Item(System.String)">
+            <summary>
+            Gets a SqlStoredProcedure object from the SqlStoredProcedureCollection collection that has the specified name (case-insensitive).
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlPermissions">
+            <summary>
+            Summary description for SqlPermissions.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlPermissions.Granted">
+            <summary>
+            True if a GRANT, else a DENY
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlPermissions.Grantee">
+            <summary>
+            User or Group granted this privilege
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlPermissions.ObjectId">
+            <summary>
+            Object's Database ID (if object privilege)
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlPermissions.ObjectName">
+            <summary>
+            Object's Name (if object privilege)
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlPermissions.ObjectOwner">
+            <summary>
+            Object Owner's Name (if object privilege)
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlPermissions.ObjectType">
+            <summary>
+            Object's Type (if object privilege)
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlPermissions.ObjectTypeName">
+            <summary>
+            Object's Type Name (if object privilege)
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlPermissions.PrivilegeType">
+            <summary>
+            Bitmask of privilege type(s)
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlPermissions.PrivilegeTypeName">
+            <summary>
+            Privilege Type's Name
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlLanguage">
+            <summary>
+            Represents a single language within SQL Server
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlLanguage.#ctor(SqlAdmin.SqlServer,System.String,System.Int32,System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="server">A SqlServer object</param>
+            <param name="name">The name of the language</param>
+            <param name="id">The language Id</param>
+        </member>
+        <member name="P:SqlAdmin.SqlLanguage.Name">
+            <summary>
+            The name of language
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLanguage.ID">
+            <summary>
+            The language ID
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLanguage.Alias">
+            <summary>
+            Alias for this language
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlColumnCollection">
+            <summary>
+            A collection of SqlColumn objects that represent the columns in a SQL table.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlColumnCollection.Add(SqlAdmin.SqlColumnInformation)">
+            <summary>
+            Adds a new column to the table with specified column information.
+            </summary>
+            <param name="columnInfo">
+            The column information for the column to add.
+            </param>
+            <returns>
+            If the operation succeeded, the return value is the column created.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlColumnCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the items from the SqlColumnCollection to the specified System.Array object, starting at the specified index in the System.Array object.
+            </summary>
+            <param name="array">
+            </param>
+            <param name="index">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.SqlColumnCollection.GetEnumerator">
+            <summary>
+            Returns an System.Collections.IEnumerator interface that contains all SqlColumn objects in the SqlColumnCollection.
+            </summary>
+            <returns>
+            A System.Collections.IEnumerator interface that contains all SqlColumn objects in the SqlColumnCollection.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlColumnCollection.Refresh">
+            <summary>
+            Updates the SqlColumnCollection with any changes made since the last call to Refresh.
+            Refresh is automatically called once when the SqlTable.Columns collection is read.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnCollection.Count">
+            <summary>
+            Gets the number of columns in the SqlColumnCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnCollection.IsReadOnly">
+            <summary>
+            Gets a value that indicates whether the columns in the SqlColumnCollection can be modified.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnCollection.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the SqlColumnCollection is synchronized (thread-safe).
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnCollection.SyncRoot">
+            <summary>
+            Gets the object that can be used to synchronize access to the SqlColumnCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnCollection.Item(System.Int32)">
+            <summary>
+            Gets a SqlColumn object from the SqlColumnCollection collection at the specified index.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlColumnCollection.Item(System.String)">
+            <summary>
+            Gets a SqlColumn object from the SqlColumnCollection collection that has the specified name (case-insensitive).
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlTableCollection">
+            <summary>
+            A collection of SqlTable objects that represent the tables in a SQL database.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlTableCollection.Add(System.String,SqlAdmin.SqlColumnInformation[])">
+            <summary>
+            Adds a new table to the database with specified columns.
+            </summary>
+            <param name="name">
+            The name of the table to create.
+            </param>
+            <param name="columnInfos">
+            An array of at least one SqlColumnInformation object with the column information filled out.
+            </param>
+            <returns>
+            If the operation succeeded, the return value is the table created.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlTableCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the items from the SqlTableCollection to the specified System.Array object, starting at the specified index in the System.Array object.
+            </summary>
+            <param name="array">
+            </param>
+            <param name="index">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.SqlTableCollection.GetEnumerator">
+            <summary>
+            Returns an System.Collections.IEnumerator interface that contains all SqlTable objects in the SqlTableCollection.
+            </summary>
+            <returns>
+            A System.Collections.IEnumerator interface that contains all SqlTable objects in the SqlTableCollection.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlTableCollection.Refresh">
+            <summary>
+            Updates the SqlTableCollection with any changes made since the last call to Refresh.
+            Refresh is automatically called once when the SqlDatabase.Tables collection is read.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTableCollection.Count">
+            <summary>
+            Gets the number of tables in the SqlTableCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTableCollection.IsReadOnly">
+            <summary>
+            Gets a value that indicates whether the columns in the SqlTableCollection can be modified.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTableCollection.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the SqlTableCollection is synchronized (thread-safe).
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTableCollection.SyncRoot">
+            <summary>
+            Gets the object that can be used to synchronize access to the SqlTableCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTableCollection.Item(System.Int32)">
+            <summary>
+            Gets a SqlTable object from the SqlTableCollection collection at the specified index.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlTableCollection.Item(System.String)">
+            <summary>
+            Gets a SqlTable object from the SqlTableCollection collection that has the specified name (case-insensitive).
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlServerRoleCollection">
+            <summary>
+            Summary description for SqlLoginCollection.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlServerRoleCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the items from the SqlServerRoleCollection to the specified System.Array object, starting at the specified index in the System.Array object.
+            </summary>
+            <param name="array">
+            </param>
+            <param name="index">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.SqlServerRoleCollection.GetEnumerator">
+            <summary>
+            Returns an System.Collections.IEnumerator interface that contains all SqlServerRole objects in the SqlServerRoleCollection.
+            </summary>
+            <returns>
+            A System.Collections.IEnumerator interface that contains all SqlServerRole objects in the SqlServerRoleCollection.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlServerRoleCollection.Refresh">
+            <summary>
+            Updates the SqlServerRoleCollection with any changes made since the last call to Refresh.
+            Refresh is automatically called once when the SqlTable.sqlServerRoles collection is read.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServerRoleCollection.Count">
+            <summary>
+            Gets the number of server roles in the SqlServerRoleCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServerRoleCollection.IsReadOnly">
+            <summary>
+            Gets a value that indicates whether the server rike in the SqlServerRoleCollection can be modified.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServerRoleCollection.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the SqlServerRoleCollection is synchronized (thread-safe).
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServerRoleCollection.SyncRoot">
+            <summary>
+            Gets the object that can be used to synchronize access to the SqlServerRoleCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServerRoleCollection.Item(System.Int32)">
+            <summary>
+            Gets a SqlServerRole object from the SqlServerRoleCollection collection at the specified index.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlServerRoleCollection.Item(System.String)">
+            <summary>
+            Gets a SqlServerRole object from the SqlServerRoleCollection collection that has the specified name (case-insensitive).
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlScriptType">
+            <summary>
+            Specifies the SQL statements to be included in the script.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlScriptType.Create">
+            <summary>
+            The script should include an object creation statement.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlScriptType.Drop">
+            <summary>
+            The script should include an object drop statement.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlScriptType.Comments">
+            <summary>
+            The script should include comments.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlScriptType.Defaults">
+            <summary>
+            The script should include defaults.
+            This only applies to table schema.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlScriptType.PrimaryKey">
+            <summary>
+            The script should include the primary key.
+            This only applies to table schema.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlScriptType.Checks">
+            <summary>
+            The script should include checks.
+            This only applies to table schema.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlScriptType.ForeignKeys">
+            <summary>
+            The script should include foreign keys.
+            This only applies to table schema.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlScriptType.UniqueKeys">
+            <summary>
+            The script should include unique keys.
+            This only applies to table schema.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlScriptType.Indexes">
+            <summary>
+            The script should include indexes.
+            This only applies to table schema.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlLoginType">
+            <summary>
+            Summary description for SqlNtAccessType.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlLoginType.NTUser">
+            <summary>
+            The login is an NT User
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlLoginType.NTGroup">
+            <summary>
+            The login is an NT Groups
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlLoginType.Standard">
+            <summary>
+            The login is a SQL Server login
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlDatabaseRole">
+            <summary>
+            Represents a Database Role
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabaseRole.AddMember(System.String)">
+            <summary>
+            Add a new User to current database role.
+            </summary>
+            <param name="userName">The UserName</param>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabaseRole.DropMember(System.String)">
+            <summary>
+            Remove a User to current database role
+            </summary>
+            <param name="userName">The UserName</param>
+        </member>
+        <member name="M:SqlAdmin.SqlDatabaseRole.GetDatabaseRoleMembers">
+            <summary>
+            returns a ArrayList object that enumerates the members of a SQL Server fixed server security role
+            Each item in the ArrayList contains a database username.
+            </summary>
+            <returns>An ArrayList filled with a username for each item (String).</returns>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseRole.AppRole">
+            <summary>
+            Database Application Role. Exposes the security context for a database role.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseRole.Name">
+            <summary>
+            Database Role Name
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseRole.Password">
+            <summary>
+            Password for Database Application Role
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlDatabaseRole.IsFixedRole">
+            <summary>
+            Is current DatabaseRole a fixed role?" 
+            Returns TRUE when the database role referenced is system-defined.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.Controls.ItemPicker">
+            <summary>
+            Abstract control for creating a 1 to 1 "picker" for any collection object
+            that implements ICollection.
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlLoginCollection">
+            <summary>
+            Summary description for SqlLoginCollection.
+            </summary>
+        </member>
+        <member name="M:SqlAdmin.SqlLoginCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the items from the SqlLoginCollection to the specified System.Array object, starting at the specified index in the System.Array object.
+            </summary>
+            <param name="array">
+            </param>
+            <param name="index">
+            </param>
+        </member>
+        <member name="M:SqlAdmin.SqlLoginCollection.GetEnumerator">
+            <summary>
+            Returns an System.Collections.IEnumerator interface that contains all SqlLogin objects in the SqlLoginCollection.
+            </summary>
+            <returns>
+            A System.Collections.IEnumerator interface that contains all SqlLogin objects in the SqlLoginCollection.
+            </returns>
+        </member>
+        <member name="M:SqlAdmin.SqlLoginCollection.Add(System.String,SqlAdmin.SqlLoginType,System.String)">
+            <summary>
+            Adds a new SQL Server login
+            </summary>
+            <param name="name">The name for the new login</param>
+            <param name="type">By default, a login is created for use by SQL Server Authentication. Alternately specify the login type to map a Microsoft Windows NT 4.0 or Microsoft Windows 2000 user or group.</param>
+            <returns>A new SqlLogin Object</returns>
+        </member>
+        <member name="M:SqlAdmin.SqlLoginCollection.Refresh">
+            <summary>
+            Updates the SqlLoginCollection  with any changes made since the last call to Refresh.
+            Refresh is automatically called once when the SqlTable.sqlLogins collection is read.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLoginCollection.Count">
+            <summary>
+            Gets the number of SQL Login in the SqlLoginCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLoginCollection.IsReadOnly">
+            <summary>
+            Gets a value that indicates whether the login in the SqlLoginCollection can be modified.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLoginCollection.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the SqlLoginCollection is synchronized (thread-safe).
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLoginCollection.SyncRoot">
+            <summary>
+            Gets the object that can be used to synchronize access to the SqlLoginCollection.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLoginCollection.Item(System.Int32)">
+            <summary>
+            Gets a SqlLogin object from the SqlLoginCollection collection at the specified index.
+            </summary>
+        </member>
+        <member name="P:SqlAdmin.SqlLoginCollection.Item(System.String)">
+            <summary>
+            Gets a SqlLogin object from the SqlLoginCollection collection that has the specified name (case-insensitive).
+            </summary>
+        </member>
+        <member name="T:SqlAdmin.SqlFileGrowthType">
+            <summary>
+            Represents the file growth type for a data file or a transaction log file of a database.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlFileGrowthType.MB">
+            <summary>
+            Indicates that the file should grow in megabytes.
+            </summary>
+        </member>
+        <member name="F:SqlAdmin.SqlFileGrowthType.Percent">
+            <summary>
+            Indicates that the file should grow by a certain percentage.
+            </summary>
+        </member>
+    </members>
+</doc>

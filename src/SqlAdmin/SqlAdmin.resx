@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" targetNamespace="" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="ResMimeType">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="Version">
+    <value>1.0.0.0</value>
+  </resheader>
+  <resheader name="Reader">
+    <value>System.Resources.ResXResourceReader</value>
+  </resheader>
+  <resheader name="Writer">
+    <value>System.Resources.ResXResourceWriter</value>
+  </resheader>
+
+
+  <data name="SqlDatabase_Status_Normal">
+    <value>Normal</value>
+  </data>
+  <data name="SqlDatabase_Status_EmergencyMode">
+    <value>Emergency Mode</value>
+  </data>
+  <data name="SqlDatabase_Status_Inaccessible">
+    <value>Inaccessible</value>
+  </data>
+  <data name="SqlDatabase_Status_Loading">
+    <value>Loading</value>
+  </data>
+  <data name="SqlDatabase_Status_Offline">
+    <value>Offline</value>
+  </data>
+  <data name="SqlDatabase_Status_Recovering">
+    <value>Recovering</value>
+  </data>
+  <data name="SqlDatabase_Status_Standby">
+    <value>Standby</value>
+  </data>
+  <data name="SqlDatabase_Status_Suspect">
+    <value>Suspect</value>
+  </data>
+  <data name="SqlDatabase_Status_Unknown">
+    <value>Unknown</value>
+  </data>
+
+
+  <data name="SqlTable_ExportComment">
+    <value>/* Data for table {0} */</value>
+  </data>
+
+
+  <data name="SqlColumnCollection_MustHaveValidName">
+    <value>The column must have a valid name</value>
+  </data>
+  <data name="SqlColumnCollection_MustHaveValidDataType">
+    <value>The column must have a valid data type</value>
+  </data>
+  <data name="SqlColumnCollection_NameAlreadyExists">
+    <value>A column named '{0}' already exists in this table</value>
+  </data>
+
+
+  <data name="SqlTable_MustBeEmpty">
+    <value>Table must be empty</value>
+  </data>
+
+
+  <data name="SqlDatabaseCollection_MustHaveValidName">
+    <value>The database must have a valid name</value>
+  </data>
+  <data name="SqlDatabaseCollection_NameAlreadyExists">
+    <value>A database named '{0}' already exists on this server</value>
+  </data>
+
+
+  <data name="SqlTableCollection_MustHaveValidName">
+    <value>The table must have a valid name</value>
+  </data>
+  <data name="SqlTableCollection_NameAlreadyExists">
+    <value>A table named '{0}' already exists in this database</value>
+  </data>
+  <data name="SqlTableCollection_AtLeastOneColumn">
+    <value>At least one column must be specified when creating a new table</value>
+  </data>
+
+
+  <data name="SqlStoredProcedureCollection_MustHaveValidName">
+    <value>The stored procedure must have a valid name</value>
+  </data>
+  <data name="SqlStoredProcedureCollection_NameAlreadyExists">
+    <value>A stored procedure named '{0}' already exists in this database</value>
+  </data>
+
+
+  <data name="SqlColumnInformation_Key">
+    <value>Indicates whether this column is part of the primary key.</value>
+  </data>
+  <data name="SqlColumnInformation_Identity">
+    <value>True if the column is an identity column.</value>
+  </data>
+  <data name="SqlColumnInformation_Name">
+    <value>The name of the column.</value>
+  </data>
+  <data name="SqlColumnInformation_DataType">
+    <value>The data type of this column.</value>
+  </data>
+  <data name="SqlColumnInformation_Size">
+    <value>The size of this column.</value>
+  </data>
+  <data name="SqlColumnInformation_Scale">
+    <value>The maximum number of digits that can appear to the right of the decimal point for values of this column.</value>
+  </data>
+  <data name="SqlColumnInformation_Precision">
+    <value>The maximum number of digits for values of this column.</value>
+  </data>
+  <data name="SqlColumnInformation_Nulls">
+    <value>True if a column can contain null values.</value>
+  </data>
+  <data name="SqlColumnInformation_DefaultValue">
+    <value>The default for this column whenever a row with a null value for this column is inserted into the table. Defaults that contain strings must be enclosed in single quotes, e.g. 'hello'.</value>
+  </data>
+  <data name="SqlColumnInformation_IdentitySeed">
+    <value>The seed value of an identity column. This option applies only to columns whose Identity option is set to True.</value>
+  </data>
+  <data name="SqlColumnInformation_IdentityIncrement">
+    <value>The increment value of an identity column. This option applies only to columns whose Identity option is set to True.</value>
+  </data>
+  <data name="SqlColumnInformation_IsRowGuid">
+    <value>Indicates whether the column is used by SQL Server as a ROWGUID column.  You can set this value to True only for a column that is an identity column.</value>
+  </data>
+
+  <data name="SqlLogin_MustHaveValidName">
+	<value>The sql login must have a valid name</value>
+  </data>
+    <data name="SqlLogin_NameAlreadyExists">
+    <value>A sql login named '{0}' already exists in this database</value>
+  </data>
+
+</root>
