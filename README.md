@@ -32,5 +32,5 @@ Since 2007, this proejct was an orphan, and technique has been moving forward fa
 
 TODO:
 ----------------------
-@ Make it workable with **SQL standard authentication
-@ Move to ASP.NET **MVC** instead of WebForm
+- Make it workable with **SQL standard authentication
+- Move to ASP.NET **MVC** instead of WebForm
