@@ -1,6 +1,7 @@
 # SqlWebAdmin
 
 A tool assists people administrate MSSQL via web pages. 
+
 There's **phpmyadmin** for MySQL, **WHY NO ONE FOR MSSQL!!??**
 
 ![A snapshot to show what the tool look like.](doc/e35ca15a-0c92-4ff8-9e30-8749c823a664.jpg)
