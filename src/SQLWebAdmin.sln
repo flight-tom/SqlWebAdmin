@@ -1,13 +1,20 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalReferences", "ExternalReferences", "{28D77860-CA28-4E9C-AF40-EF77292080B3}"
+	ProjectSection(SolutionItems) = preProject
+		ExternalReferences\AjaxControlToolkit.dll = ExternalReferences\AjaxControlToolkit.dll
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlAdmin", "SqlAdmin\SqlAdmin.csproj", "{B02B97F6-AB1B-4F01-8EC6-67140945B542}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextMenu", "ContextMenu\ContextMenu.csproj", "{F25D8BAA-9D31-4F02-90D3-2752F1228CD9}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SqlWebAdmin", "SqlWebAdmin\", "{ABB5B217-A4BF-46F9-9D0D-20CC148D31AE}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFramework = "3.5"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
 		ProjectReferences = "{F25D8BAA-9D31-4F02-90D3-2752F1228CD9}|ContextMenu.dll;{B02B97F6-AB1B-4F01-8EC6-67140945B542}|SqlAdmin.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/SqlWebAdmin"
 		Debug.AspNetCompiler.PhysicalPath = "SqlWebAdmin\"
@@ -24,11 +31,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SqlWebAdmin", "SqlWebAdmin\
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "5756"
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalReferences", "ExternalReferences", "{28D77860-CA28-4E9C-AF40-EF77292080B3}"
-	ProjectSection(SolutionItems) = preProject
-		ExternalReferences\AjaxControlToolkit.dll = ExternalReferences\AjaxControlToolkit.dll
+		SlnRelativePath = "SqlWebAdmin\"
 	EndProjectSection
 EndProject
 Global
@@ -63,7 +66,8 @@ Global
 		{F25D8BAA-9D31-4F02-90D3-2752F1228CD9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{ABB5B217-A4BF-46F9-9D0D-20CC148D31AE}.Debug|.NET.ActiveCfg = Debug|.NET
 		{ABB5B217-A4BF-46F9-9D0D-20CC148D31AE}.Debug|.NET.Build.0 = Debug|.NET
-		{ABB5B217-A4BF-46F9-9D0D-20CC148D31AE}.Debug|Any CPU.ActiveCfg = Debug|.NET
+		{ABB5B217-A4BF-46F9-9D0D-20CC148D31AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABB5B217-A4BF-46F9-9D0D-20CC148D31AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABB5B217-A4BF-46F9-9D0D-20CC148D31AE}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
 		{ABB5B217-A4BF-46F9-9D0D-20CC148D31AE}.Debug|Mixed Platforms.Build.0 = Debug|.NET
 		{ABB5B217-A4BF-46F9-9D0D-20CC148D31AE}.Release|.NET.ActiveCfg = Debug|.NET
@@ -74,5 +78,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C686E7C-5488-4CE9-896E-FD15F7DE8226}
 	EndGlobalSection
 EndGlobal

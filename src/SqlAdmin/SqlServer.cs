@@ -13,15 +13,14 @@ using System;
 using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
 using System.Text.RegularExpressions;
 using System.Web;
 
 namespace SqlAdmin {
-	/// <summary>
-	/// Represents a Microsoft SQL Server.
-	/// </summary>
-	public class SqlServer {
+    /// <summary>
+    /// Represents a Microsoft SQL Server.
+    /// </summary>
+    public class SqlServer {
 
 		internal NativeMethods.ISqlServer dmoServer;
 
@@ -29,7 +28,7 @@ namespace SqlAdmin {
 		private string username;
 		private string password;
 		private bool IntegratedSecurity = false;
-		Security security;
+        readonly Security security;
 
 		/// <summary>
 		/// Initializes a new instance of the SqlServer class.
@@ -39,22 +38,23 @@ namespace SqlAdmin {
 		/// <param name="password">The password to connect with</param>
 		public SqlServer(string name, string username, string password, bool useIntegrated) {
 			string domain = null;
-      string userName = null;
-      
-      this.name        = name;
-			this.username    = username;
-			this.password    = password;
-			this.IntegratedSecurity = useIntegrated;
+			string userName = null;
 
-			if ( this.IntegratedSecurity ) {
-  				security = new Security();
-        try {
-          domain = this.username.Split(char.Parse(@"\"))[0];
-          userName = this.username.Split(char.Parse(@"\"))[1];
-        } catch (Exception ex) {
-          throw new ApplicationException(@"Username is formatted incorrectly. Please use computername\username");
-        }
-					security.Impersonate(userName, domain, this.password);
+			this.name = name;
+			this.username = username;
+			this.password = password;
+			IntegratedSecurity = useIntegrated;
+
+			if (IntegratedSecurity) {
+				security = new Security();
+				try {
+					domain = this.username.Split(char.Parse(@"\"))[0];
+					userName = this.username.Split(char.Parse(@"\"))[1];
+				}
+				catch {
+					throw new ApplicationException(@"Username is formatted incorrectly. Please use computername\username");
+				}
+				security.Impersonate(userName, domain, this.password);
 			}
 		}
 		/// <summary>
@@ -63,7 +63,7 @@ namespace SqlAdmin {
 		/// <param name="name">The name of the server (e.g. localhost)</param>
 		public SqlServer(string name) {
 			this.name = name;
-			this.IntegratedSecurity = true;
+			IntegratedSecurity = true;
 		}
 
 
@@ -116,7 +116,7 @@ namespace SqlAdmin {
 				username = value;
 			}
 		}
-			
+
 		/// <summary>
 		/// Collection contains ServerRole objects that enumerate the security administration units
 		/// </summary>
@@ -133,11 +133,11 @@ namespace SqlAdmin {
 		/// </summary>
 		public SqlLoginCollection Logins {
 			get {
-		
+
 				SqlLoginCollection dbLogins = new SqlLoginCollection(this);
 				dbLogins.Refresh();
 				return dbLogins;
-		
+
 			}
 
 		}
@@ -158,7 +158,7 @@ namespace SqlAdmin {
 		/// </summary>
 		public bool LoginSecure {
 			get {
-				return this.IntegratedSecurity;
+				return IntegratedSecurity;
 			}
 			set {
 				this.IntegratedSecurity = value;
@@ -172,13 +172,13 @@ namespace SqlAdmin {
 
 			dmoServer = (NativeMethods.ISqlServer)new NativeMethods.SqlServer();
 			dmoServer.Bogus_LoginSecure2(this.IntegratedSecurity);
-			if(this.IntegratedSecurity == false) {
+			if (IntegratedSecurity == false) {
 				dmoServer.Connect(Name, Username, Password);
 			}
 			else {
 
 				dmoServer.Connect(Name, null, null);
-				
+
 
 			}
 
@@ -193,7 +193,7 @@ namespace SqlAdmin {
 				// Physically disconnect from server
 				dmoServer.DisConnect();
 			}
-			if ( this.IntegratedSecurity )
+			if (IntegratedSecurity)
 				security.EndImpersonate();
 		}
 
@@ -209,9 +209,9 @@ namespace SqlAdmin {
 
 			if (Name != "")
 				s.Add("Server=" + Name);
-            
-			if(this.IntegratedSecurity == false) {
-												
+
+			if (IntegratedSecurity == false) {
+
 				if (Username != "")
 					s.Add("User ID=" + Username);
 				if (Password != "")
@@ -222,7 +222,7 @@ namespace SqlAdmin {
 			}
 
 			string[] ss = (string[])s.ToArray(typeof(string));
-			return String.Join("; ", ss);
+			return string.Join("; ", ss);
 		}
 
 		/// <summary>
@@ -281,68 +281,61 @@ namespace SqlAdmin {
 			SqlConnection myConnection = null;
 			ArrayList result = new ArrayList();
 
-            try
-            {
-                // Get connection string and add database name if necessary
-                if (database == null || database.Length == 0)
-                    myConnection = new SqlConnection(GetConnectionString());
-                else
-                    myConnection = new SqlConnection(GetConnectionString() + "; Initial Catalog=" + database);
+			try {
+				// Get connection string and add database name if necessary
+				if (database == null || database.Length == 0)
+					myConnection = new SqlConnection(GetConnectionString());
+				else
+					myConnection = new SqlConnection(GetConnectionString() + "; Initial Catalog=" + database);
 
-                myConnection.Open();
+				myConnection.Open();
 
-                // Tack on whitespace so that the RegEx doesn't mess up
-                query += "\r\n";
+				// Tack on whitespace so that the RegEx doesn't mess up
+				query += "\r\n";
 
-                // Split query at each "go"
-                Regex regex = new Regex("[\r\n][gG][oO][\r\n]");
+				// Split query at each "go"
+				Regex regex = new Regex("[\r\n][gG][oO][\r\n]");
 
-                MatchCollection matches = regex.Matches(query);
+				MatchCollection matches = regex.Matches(query);
 
-                int prevIndex = 0;
-                string tquery;
+				int prevIndex = 0;
+				string tquery;
 
-                for (int i = 0; i < matches.Count; i++)
-                {
-                    Match m = matches[i];
+				for (int i = 0; i < matches.Count; i++) {
+					Match m = matches[i];
 
-                    tquery = query.Substring(prevIndex, m.Index - prevIndex);
+					tquery = query.Substring(prevIndex, m.Index - prevIndex);
 
-                    if (tquery.Trim().Length > 0)
-                    {
-                        SqlDataAdapter myCommand = new SqlDataAdapter(tquery.Trim(), myConnection);
+					if (tquery.Trim().Length > 0) {
+						SqlDataAdapter myCommand = new SqlDataAdapter(tquery.Trim(), myConnection);
 
-                        DataSet singleresult = new DataSet();
-                        myCommand.Fill(singleresult);
+						DataSet singleresult = new DataSet();
+						myCommand.Fill(singleresult);
 
-                        for (int j = 0; j < singleresult.Tables.Count; j++)
-                        {
-                            result.Add(singleresult.Tables[j]);
-                        }
-                    }
+						for (int j = 0; j < singleresult.Tables.Count; j++) {
+							result.Add(singleresult.Tables[j]);
+						}
+					}
 
-                    prevIndex = m.Index + 3;
-                }
+					prevIndex = m.Index + 3;
+				}
 
-                tquery = query.Substring(prevIndex, query.Length - prevIndex);
+				tquery = query.Substring(prevIndex, query.Length - prevIndex);
 
-                if (tquery.Trim().Length > 0)
-                {
-                    SqlDataAdapter myCommand = new SqlDataAdapter(tquery.Trim(), myConnection);
+				if (tquery.Trim().Length > 0) {
+					SqlDataAdapter myCommand = new SqlDataAdapter(tquery.Trim(), myConnection);
 
-                    DataSet singleresult = new DataSet();
-                    myCommand.Fill(singleresult);
+					DataSet singleresult = new DataSet();
+					myCommand.Fill(singleresult);
 
-                    for (int j = 0; j < singleresult.Tables.Count; j++)
-                    {
-                        result.Add(singleresult.Tables[j]);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
-            }
+					for (int j = 0; j < singleresult.Tables.Count; j++) {
+						result.Add(singleresult.Tables[j]);
+					}
+				}
+			}
+			catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine(ex.ToString());
+			}
 			finally {
 				myConnection.ChangeDatabase("master");
 				myConnection.Close();
@@ -360,17 +353,17 @@ namespace SqlAdmin {
 				if (AdminUser.CurrentUser == null) {
 					HttpContext.Current.Response.Redirect("~/Default.aspx?error=sessionexpired");
 					return null;
-				} 
+				}
 
 				if (AdminUser.CurrentUser.UseIntegratedSecurity) {
 					return new SqlServer(AdminUser.CurrentUser.Server, AdminUser.CurrentUser.Username, AdminUser.CurrentUser.Password, true);
 				}
 				else {
 					return new SqlServer(AdminUser.CurrentUser.Server, AdminUser.CurrentUser.Username, AdminUser.CurrentUser.Password, false);
-				
+
 				}
 			}
 		}
-		
+
 	}
 }

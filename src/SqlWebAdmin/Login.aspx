@@ -1,4 +1,4 @@
-<%@ Page Language="c#" Inherits="SqlWebAdmin.Login" CodeFile="Default.aspx.cs" %>
+<%@ Page Language="c#" Inherits="SqlWebAdmin.Login" CodeFile="Login.aspx.cs" %>
 
 <%@ Register TagPrefix="Toolbar" TagName="HelpLogout" Src="Toolbars/HelpLogoutToolbar.ascx" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
@@ -143,8 +143,7 @@
                                     <td class="databaseListItem" nowrap>
                                         <asp:RadioButtonList ID="AuthRadioButtonList" runat="server" AutoPostBack="True"
                                             OnSelectedIndexChanged="AuthRadioButtonList_SelectedIndexChanged">
-                                            <asp:ListItem Value="windows" Selected="True">Windows Integrated</asp:ListItem>
-                                            <asp:ListItem Value="sql">SQL Login</asp:ListItem>
+                                            <asp:ListItem Value="sql" Selected="True">SQL Login</asp:ListItem>
                                         </asp:RadioButtonList>
                                     </td>
                                     <td class="databaseListItem">

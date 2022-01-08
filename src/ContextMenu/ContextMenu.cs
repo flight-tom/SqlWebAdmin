@@ -338,7 +338,7 @@ namespace Msdn
 			//js = js.Replace("{0}", Controls[0].ClientID);
 
 			if (!Page.IsStartupScriptRegistered("ContextMenuHelper"))
-				Page.RegisterStartupScript("ContextMenuHelper", js);
+                Page.RegisterStartupScript("ContextMenuHelper", js);
 		}
 
 

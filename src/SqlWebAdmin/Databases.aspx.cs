@@ -35,7 +35,7 @@ namespace SqlWebAdmin
             Page.Init += new System.EventHandler(Page_Init);
         }
 
-        protected void Page_Load(object sender, System.EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
 			SqlServer server = SqlServer.CurrentServer;
 
