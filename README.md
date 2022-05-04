@@ -29,11 +29,11 @@ As HaiyanDu7@gmail.com was saying on the archive page:
 > My vision to use this project is for web hosting company.  
 > Security Policy needs more work, especially need more testing, to make sure that there is no SQL user can see other's data.  
 
-Since 2007, this proejct was an orphan, and technique has been moving forward far from there, I decide to make it live again.
+Since 2007, this proejct became an orphan, technique has been moving forward far from it, I decide to make it live again.
 
-*beside I readlly need this functionality to assist my job in a remote work.*
+*beside I readlly need this functionality to assist my remote work.*
 
 TODO:
 ----------------------
-- Make it work with **SQL standard authentication** (done)
-- Move to ASP.NET **MVC** instead of WebForm
+- [x] Make it work with **SQL standard authentication** (done)
+- [] Move to ASP.NET **MVC** instead of WebForm
